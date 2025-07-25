@@ -1,0 +1,175 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body.light-mode {
+  background: linear-gradient(to right, #74ebd5, #acb6e5);
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body.dark-mode {
+  background: #1a1a1a;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  text-align: center;
+  background-color: var(--bg-color);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px; /* max width for mobile/tablet */
+  margin: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+:root {
+  --bg-color: white;
+  --card-back: #f0f0f0;
+}
+
+body.dark-mode .game-container {
+  --bg-color: #2c2c2c;
+  --card-back: #444;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+input[type="file"] {
+  margin-left: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* keeps 4 columns */
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.card {
+  width: 100px;      /* adjust width of each card */
+  height: 100px;     /* adjust height of each card */
+  perspective: 1000px;
+  cursor: pointer;
+  margin: auto;
+}
+
+.card .inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card.flipped .inner {
+  transform: rotateY(180deg);
+}
+
+.card .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  user-select: none;
+  font-size: 2rem;
+}
+
+.card .back {
+  background-color: var(--card-back);
+  border: 2px solid #ccc;
+  color: #888;
+}
+
+.card .front {
+  background-color: #fff;
+  border: 2px solid #4caf50;
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+.card .front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.player-turn {
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: var(--bg-color);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  max-width: 300px;
+  width: 90%;
+}
+
+.leaderboard {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+}
